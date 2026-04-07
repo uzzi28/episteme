@@ -1,0 +1,124 @@
+{% extends "base.html" %}
+
+{% block title %}Nozick's Tracking Theory — Episteme{% endblock %}
+
+{% block extra_css %}
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/nozick.css') }}">
+{% endblock %}
+
+{% block content %}
+
+<header class="page-header">
+  <p class="page-tag">Module 01 — Knowledge &amp; Possibility</p>
+  <h1 class="page-title">Nozick's Tracking Theory</h1>
+  <p class="page-subtitle">
+    Knowledge requires that your belief <em>tracks</em> the truth — it would shift as reality shifts
+    across <em>nearby possible worlds</em>.
+  </p>
+</header>
+
+<section class="theory-section">
+  <div class="theory-overview">
+    <h3>The Core Idea</h3>
+    <p>
+      Robert Nozick (1981) argued that <em>justified true belief</em> is not sufficient for
+      knowledge. The classic JTB account misses a crucial modal dimension: does the belief
+      <em>covary</em> with the truth?
+    </p>
+    <div class="theory-jtb">
+      <p>S knows P iff: (1) P is true &nbsp;·&nbsp; (2) S believes P &nbsp;·&nbsp;
+         (3) <strong>Sensitivity</strong> &nbsp;·&nbsp; (4) <strong>Adherence</strong></p>
+    </div>
+    <p>
+      Conditions 3 and 4 are evaluated using <em>possible worlds semantics</em>. We ask: in nearby
+      worlds — worlds minimally different from ours — does the belief still track the fact?
+    </p>
+    <p>
+      The key insight is the <em>method</em> of belief formation. A belief formed by direct
+      perception may be sensitive; the same belief held as a background assumption may not be.
+      The same proposition can be known or not known depending on how the belief was formed.
+    </p>
+  </div>
+
+  <div class="conditions-grid">
+    <div class="condition-card sensitivity">
+      <div class="condition-label">Condition 3</div>
+      <div class="condition-name">Sensitivity</div>
+      <div class="condition-formula">¬P →<sub>w</sub> ¬(S believes P)</div>
+      <div class="condition-desc">
+        If P were false, S would not believe P. Evaluated at the <em>nearest not-P worlds</em>.
+        Does the belief turn off when the truth turns off? If in those worlds S still believes P,
+        the belief is insensitive and there is no knowledge.
+      </div>
+    </div>
+    <div class="condition-card adherence">
+      <div class="condition-label">Condition 4</div>
+      <div class="condition-name">Adherence</div>
+      <div class="condition-formula">P →<sub>w</sub> (S believes P)</div>
+      <div class="condition-desc">
+        If P were true, S would believe P. Evaluated at the <em>nearest P worlds</em>. Does
+        the belief reliably switch on when the fact holds? Adherence rarely fails in isolation
+        but matters for reliability of method.
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- ── Possible Worlds Explorer ───────────────────────────────────── -->
+<section class="explorer-section" id="possibleWorldsExplorer">
+
+  <div class="explorer-header">
+    <div class="explorer-title-row">
+      <div>
+        <p class="page-tag">Interactive Explorer</p>
+        <h2 class="explorer-title">Possible Worlds Explorer</h2>
+        <p class="explorer-subtitle">
+          Generate a proposition, then click the world-blobs to see how truth and belief
+          shift across nearby and distant possible worlds. Test your understanding below.
+        </p>
+      </div>
+      <button class="generate-btn" id="generateBtn">↻ Generate New Statement</button>
+    </div>
+  </div>
+
+  <div id="statementBanner" class="statement-banner"></div>
+
+  <div class="worlds-layout">
+    <div class="worlds-canvas-col">
+      <svg id="worldsCanvas" viewBox="0 0 900 500" xmlns="http://www.w3.org/2000/svg"></svg>
+      <div class="canvas-legend">
+        <span class="cl-item"><span class="cl-dot actual"></span>Actual world</span>
+        <span class="cl-item"><span class="cl-dot p-true"></span>P is true in this world</span>
+        <span class="cl-item"><span class="cl-dot p-false"></span>P is false in this world</span>
+        <span class="cl-item"><span class="cl-dot distant"></span>Distant world</span>
+        <span class="cl-item"><span class="cl-badge">✓</span> Agent believes P</span>
+        <span class="cl-item"><span class="cl-badge" style="background:var(--fail-bg);color:var(--fail)">✗</span> Agent doesn't believe P</span>
+      </div>
+    </div>
+    <div class="world-info-col">
+      <div class="world-info-panel" id="worldInfoPanel">
+        <div class="info-placeholder">
+          <span class="info-ph-icon">◎</span>
+          <span>Click any world to explore it</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="mcq-section" id="mcqSection"></div>
+
+</section>
+
+<footer class="footer">
+  <span class="footer-l">PHIL 210: Introduction to Epistemology — Duke University</span>
+  <span class="footer-r">Nozick, R. (1981). <em>Philosophical Explanations.</em> Harvard University Press, ch. 3.</span>
+</footer>
+
+{% endblock %}
+
+{% block scripts %}
+  <script src="{{ url_for('static', filename='js/nozick.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/nozick-explorer.js') }}"></script>
+{% endblock %}

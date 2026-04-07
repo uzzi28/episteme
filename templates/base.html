@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}Episteme{% endblock %}</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>◈</text></svg>">
+
+  <!-- Shared styles -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}">
+
+  <!-- Page-specific styles injected here -->
+  {% block extra_css %}{% endblock %}
+</head>
+<body>
+
+  <nav class="nav">
+    <a href="{{ url_for('index') }}" class="nav-brand">
+      <span class="nav-brand-sym">◈</span> Episteme
+    </a>
+    <div class="nav-links">
+      <a href="{{ url_for('index') }}"
+         class="{{ 'active' if request.endpoint == 'index' else '' }}">Home</a>
+      <a href="{{ url_for('nozick') }}"
+         class="{{ 'active' if request.endpoint == 'nozick' else '' }}">Tracking Theory</a>
+      <a href="{{ url_for('gettier') }}"
+         class="{{ 'active' if request.endpoint == 'gettier' else '' }}">Gettier Cases</a>
+      <span class="nav-soon">More coming soon</span>
+    </div>
+  </nav>
+
+  {% block content %}{% endblock %}
+
+  {% block scripts %}{% endblock %}
+
+</body>
+</html>

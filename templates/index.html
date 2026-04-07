@@ -1,0 +1,159 @@
+{% extends "base.html" %}
+
+{% block title %}Episteme — Interactive Epistemology{% endblock %}
+
+{% block extra_css %}
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/pages.css') }}">
+{% endblock %}
+
+{% block content %}
+
+<section class="hero">
+  <div class="hero-glow"></div>
+  <div class="hero-inner">
+    <div class="hero-eyebrow">◈ Phil 210 — Duke University</div>
+    <h1 class="hero-title">What does it mean<br>to <em>know</em> something?</h1>
+    <p class="hero-desc">
+      An interactive guide to <em>epistemology</em> — the philosophical study of knowledge, belief,
+      and justification. Explore the central debates of Phil 210 through visualization, worked
+      examples, and interactive thought experiments.
+    </p>
+    <div class="hero-meta">
+      <div class="hero-meta-item">
+        <span class="meta-label">Course</span>
+        <span class="meta-value">PHIL 210: Knowledge and Uncertainty</span>
+      </div>
+      <div class="hero-meta-item">
+        <span class="meta-label">Modules</span>
+        <span class="meta-value">2 live · 1 in progress</span>
+      </div>
+      <div class="hero-meta-item">
+        <span class="meta-label">Approach</span>
+        <span class="meta-value">Interactive · Visual · Analytic</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="modules-section">
+  <div class="section-header">
+    <h2 class="section-title">Interactive Modules</h2>
+    <span class="section-count">3 modules planned</span>
+  </div>
+
+  <div class="modules-grid">
+
+    <a href="{{ url_for('nozick') }}" class="module-card">
+      <div class="module-card-top">
+        <div class="module-number">Module 01</div>
+        <span class="module-emoji">🌐</span>
+        <div class="module-title">Nozick's Tracking Theory</div>
+        <div class="module-desc">
+          Explore knowledge as modal sensitivity. Select scenarios and watch a possible worlds
+          diagram reveal whether your belief tracks the truth across nearby counterfactual situations.
+        </div>
+      </div>
+      <div class="module-card-bottom">
+        <div class="module-concepts">
+          <span class="concept-tag">Sensitivity</span>
+          <span class="concept-tag">Adherence</span>
+          <span class="concept-tag">Possible Worlds</span>
+        </div>
+        <span class="module-arrow">→</span>
+      </div>
+    </a>
+
+    <a href="{{ url_for('gettier') }}" class="module-card">
+      <div class="module-card-top">
+        <div class="module-number">Module 02</div>
+        <span class="module-emoji">🔍</span>
+        <div class="module-title">Gettier Problem Explorer</div>
+        <div class="module-desc">
+          Walk through the classic cases that shattered the JTB account. Test proposed solutions —
+          no false lemmas, causal theory, tracking — and see why each succeeds or fails.
+        </div>
+      </div>
+      <div class="module-card-bottom">
+        <div class="module-concepts">
+          <span class="concept-tag">JTB</span>
+          <span class="concept-tag">Gettier Cases</span>
+          <span class="concept-tag">Causal Theory</span>
+        </div>
+        <span class="module-arrow">→</span>
+      </div>
+    </a>
+
+    <div class="module-card coming-soon">
+      <div class="module-card-top">
+        <div class="module-number">Module 03</div>
+        <span class="module-emoji">🧩</span>
+        <div class="module-title">Coming Soon</div>
+        <div class="module-desc">
+          Possible topics: Descartes' stages of doubt, epistemic injustice and testimonial
+          credibility, or the internalism/externalism debate.
+        </div>
+      </div>
+      <div class="module-card-bottom">
+        <div class="module-concepts">
+          <span class="concept-tag">TBD</span>
+        </div>
+        <span class="module-status">In planning</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="about-section">
+  <div class="about-left">
+    <h3>Why interactive epistemology?</h3>
+    <p>
+      Epistemology is uniquely suited to interactive exploration. Its central questions — What is
+      knowledge? How do we form justified beliefs? How do we respond to skepticism? — are directly
+      about the cognitive acts we perform when we engage with any argument or example.
+    </p>
+    <p>
+      The thought experiments at the heart of this course (Gettier cases, BIV scenarios, Fake Barn
+      County) rely on <em>modal intuitions</em>. By visualizing them we can make the structure of the argument legible, not just
+      propositionally correct.
+    </p>
+    <p>The goal is not to replace careful reading, but to build the right mental models before diving into the texts.</p>
+  </div>
+  <div class="about-right">
+    <h3>Primary Sources</h3>
+    <ul class="reading-list">
+      <li>
+        <span class="r-num">01</span>
+        <span>Gettier, E. (1963). "Is Justified True Belief Knowledge?"
+          <span class="r-cite">Analysis, 23(6), 121–123.</span></span>
+      </li>
+      <li>
+        <span class="r-num">02</span>
+        <span>Nozick, R. (1981). <span class="r-cite">Philosophical Explanations</span>,
+          ch. 3: "Knowledge and Skepticism." Harvard University Press.</span>
+      </li>
+      <li>
+        <span class="r-num">03</span>
+        <span>Goldman, A. (1976). "Discrimination and Perceptual Knowledge."
+          <span class="r-cite">Journal of Philosophy, 73(20), 771–791.</span></span>
+      </li>
+      <li>
+        <span class="r-num">04</span>
+        <span>DeRose, K. (1992). "Contextualism and Knowledge Attributions."
+          <span class="r-cite">Philosophy and Phenomenological Research, 52(4), 913–929.</span></span>
+      </li>
+      <li>
+        <span class="r-num">05</span>
+        <span>Fricker, M. (2007). <span class="r-cite">Epistemic Injustice: Power and the Ethics of Knowing.</span>
+          Oxford University Press.</span>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<footer class="footer">
+  <span class="footer-l">PHIL 210: Introduction to Epistemology — Duke University</span>
+  <span class="footer-r">Final Project — Interactive Epistemology</span>
+</footer>
+
+{% endblock %}

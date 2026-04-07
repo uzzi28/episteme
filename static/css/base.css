@@ -1,0 +1,134 @@
+/* ── base.css ──────────────────────────────────────────────────────────────
+   CSS custom properties, reset, body, nav, footer, shared utilities.
+   Loaded by base.html on every page.
+──────────────────────────────────────────────────────────────────────────── */
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap');
+
+/* ── Variables ── */
+:root {
+  --bg:            #0b0a18;
+  --surface:       #111026;
+  --surface-raised:#18162e;
+  --border:        rgba(255, 255, 255, 0.07);
+  --border-light:  rgba(255, 255, 255, 0.13);
+  --text:          #e2ddd5;
+  --text-sec:      #9994ad;
+  --text-muted:    #6b6680;
+  --gold:          #c8a84c;
+  --gold-dim:      rgba(200, 168, 76, 0.12);
+  --pass:          #52b788;
+  --pass-bg:       rgba(82, 183, 136, 0.11);
+  --fail:          #e05c68;
+  --fail-bg:       rgba(224, 92, 104, 0.11);
+}
+
+/* ── Reset ── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html { scroll-behavior: smooth; }
+
+/* ── Body ── */
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'DM Sans', system-ui, sans-serif;
+  font-weight: 300;
+  line-height: 1.65;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ── Nav ── */
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2.5rem;
+  height: 56px;
+  background: rgba(11, 10, 24, 0.94);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--border);
+}
+
+.nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  text-decoration: none;
+  color: var(--text);
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.18rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+.nav-brand-sym { color: var(--gold); }
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: var(--text-sec);
+  font-size: 0.78rem;
+  font-weight: 400;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  transition: color 0.18s;
+}
+
+.nav-links a:hover,
+.nav-links a.active { color: var(--gold); }
+
+.nav-soon {
+  color: var(--text-muted);
+  font-style: italic;
+  text-transform: none;
+  letter-spacing: normal;
+  font-size: 0.8rem;
+  cursor: default;
+}
+
+/* ── Footer ── */
+.footer {
+  padding: 1.75rem 2.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid var(--border);
+}
+
+.footer-l { font-size: 0.76rem; color: var(--text-muted); }
+.footer-r { font-size: 0.76rem; color: var(--text-muted); font-style: italic; }
+
+/* ── Shared utility ── */
+.fade-in {
+  animation: fadeUp 0.28s ease;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(7px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Responsive nav ── */
+@media (max-width: 768px) {
+  .nav { padding: 0 1.5rem; }
+  .nav-links { gap: 1.4rem; }
+  .footer { flex-direction: column; gap: 0.4rem; align-items: flex-start; padding: 1.5rem; }
+}
+
+@media (max-width: 560px) {
+  .nav-soon { display: none; }
+}
