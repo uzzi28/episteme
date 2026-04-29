@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% block title %}Epistemic Injustice — Episteme{% endblock %}
+{% block extra_css %}
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/pages.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/shared-module.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/fricker.css') }}">
+{% endblock %}
+{% block content %}
+
+<header class="page-header">
+  <p class="page-tag">Module 05 — Social Epistemology</p>
+  <h1 class="page-title">Epistemic Injustice</h1>
+  <p class="page-subtitle">
+    Miranda Fricker (2007) argues that people can be wronged specifically <em>as knowers</em> — not just
+    as people. Explore testimonial and hermeneutical injustice through real-world scenarios.
+  </p>
+</header>
+
+<section class="module-section">
+  <div class="module-intro">
+    <p>Select a scenario. Identify the type of epistemic injustice, the credibility deficit or hermeneutical gap, and Fricker's analysis of the harm.</p>
+  </div>
+
+  <!-- Type explainer -->
+  <div class="type-explainer-grid">
+    <div class="type-card testimonial">
+      <div class="tc-icon">🗣</div>
+      <div class="tc-name">Testimonial Injustice</div>
+      <div class="tc-desc">A speaker receives a credibility deficit due to identity prejudice in the hearer. Wronged in the exchange of knowledge.</div>
+    </div>
+    <div class="type-card hermeneutical">
+      <div class="tc-icon">🔇</div>
+      <div class="tc-name">Hermeneutical Injustice</div>
+      <div class="tc-desc">A gap in collective interpretive resources prevents understanding one's own experience. Structural, non-agential wrong.</div>
+    </div>
+  </div>
+
+  <!-- Scenario tabs -->
+  <div class="scenario-tabs">
+    <button class="scenario-tab-btn active" data-scenario-id="s1" onclick="selectScenario('s1')">⚠️ The Ignored Warning</button>
+    <button class="scenario-tab-btn"        data-scenario-id="s2" onclick="selectScenario('s2')">🏥 The Disbelieved Patient</button>
+    <button class="scenario-tab-btn"        data-scenario-id="s3" onclick="selectScenario('s3')">🔇 No Words for the Experience</button>
+    <button class="scenario-tab-btn"        data-scenario-id="s4" onclick="selectScenario('s4')">🧩 The Unnamed Condition</button>
+  </div>
+
+  <div id="scenarioPanel" class="scenario-panel-wrap"></div>
+</section>
+
+<!-- MCQ -->
+<section class="module-section mcq-section">
+  <div id="frickerMCQ"></div>
+</section>
+
+<footer class="footer">
+  <span class="footer-l">PHIL 210: Introduction to Epistemology — Duke University</span>
+  <span class="footer-r">Fricker, M. (2007). <em>Epistemic Injustice.</em> Oxford University Press.</span>
+</footer>
+{% endblock %}
+{% block scripts %}
+  <script src="{{ url_for('static', filename='js/fricker.js') }}"></script>
+{% endblock %}

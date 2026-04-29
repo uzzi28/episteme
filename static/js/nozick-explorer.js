@@ -759,8 +759,11 @@ function showMCQResult() {
     <div class="mcq-complete fade-in">
       <div class="complete-icon">✓</div>
       <div class="complete-title">Questions complete for this proposition</div>
-      <p class="complete-desc">Generate a new statement to explore more possible worlds and test tracking theory on a different case.</p>
-      <button class="generate-btn-inline" onclick="generateProp()">↻ Generate New Statement</button>
+      <p class="complete-desc">Generate a new statement to explore more possible worlds, or continue to the next module.</p>
+      <div style="display:flex; gap:0.75rem; flex-wrap:wrap; margin-top:0.4rem;">
+        <button class="generate-btn-inline" onclick="generateProp()">↻ Generate New Statement</button>
+        <a href="/contextualism" style="text-decoration:none; padding:0.6rem 1.3rem; background:var(--gold-dim); border:1px solid rgba(200,168,76,0.4); border-radius:3px; color:var(--gold); font-size:0.84rem; cursor:pointer;">Contextualism →</a>
+      </div>
     </div>`;
 }
 

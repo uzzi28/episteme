@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+{% block title %}Contextualism — Episteme{% endblock %}
+{% block extra_css %}
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/pages.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/shared-module.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/contextualism.css') }}">
+{% endblock %}
+{% block content %}
+
+<header class="page-header">
+  <p class="page-tag">Module 04 — Knowledge &amp; Context</p>
+  <h1 class="page-title">Contextualism &amp; the Bank Cases</h1>
+  <p class="page-subtitle">
+    Does what it takes to <em>know</em> something change with the stakes? DeRose and Cohen argue
+    that 'knows' is context-sensitive — the same evidence can make you a knower in one situation
+    and not in another.
+  </p>
+</header>
+
+<section class="module-section">
+  <div class="module-intro">
+    <p>Compare two bank cases with identical evidence but different stakes. Drag the stakes slider to see how the knowledge verdict shifts.</p>
+  </div>
+
+  <!-- Bank case tabs -->
+  <div class="tab-row">
+    <div class="bank-tabs">
+      <button class="bank-tab-btn active" data-case-id="low"  onclick="selectBankCase('low')">😌 Case A — Low Stakes</button>
+      <button class="bank-tab-btn"        data-case-id="high" onclick="selectBankCase('high')">😰 Case B — High Stakes</button>
+    </div>
+  </div>
+
+  <!-- Stakes slider -->
+  <div class="stakes-slider-section">
+    <div class="sl-header">
+      <span class="sl-label">Epistemic Stakes</span>
+      <div id="stakeDisplay" class="stake-display"></div>
+      <div id="verdictChip" class="verdict-chip knows">Knows ✓</div>
+    </div>
+    <input type="range" id="stakesSlider" class="stakes-slider"
+           min="1" max="5" value="1" step="1">
+    <div class="sl-ticks">
+      <span>Minimal</span><span>Moderate</span><span>Significant</span><span>High</span><span>Critical</span>
+    </div>
+  </div>
+
+  <div id="caseDisplay" class="case-display"></div>
+</section>
+
+<!-- Theories section -->
+<section class="module-section">
+  <h2 class="section-title" style="margin-bottom:1.2rem">Three Responses</h2>
+  <p class="section-intro">How do epistemologists explain why the verdicts differ?</p>
+
+  <div class="theory-tabs">
+    <button class="theory-tab-btn active" data-theory-id="subject"    onclick="selectTheory('subject')">Subject Sensitive Invariantism</button>
+    <button class="theory-tab-btn"        data-theory-id="context"    onclick="selectTheory('context')">Attributor Contextualism</button>
+    <button class="theory-tab-btn"        data-theory-id="invariant"  onclick="selectTheory('invariant')">Moderate Invariantism</button>
+  </div>
+
+  <div id="theoryPanel" class="theory-panel"></div>
+</section>
+
+<!-- MCQ -->
+<section class="module-section mcq-section">
+  <div id="contextMCQ"></div>
+</section>
+
+<footer class="footer">
+  <span class="footer-l">PHIL 210: Introduction to Epistemology — Duke University</span>
+  <span class="footer-r">DeRose, K. (1992). "Contextualism and Knowledge Attributions." <em>PPR.</em></span>
+</footer>
+{% endblock %}
+{% block scripts %}
+  <script src="{{ url_for('static', filename='js/contextualism.js') }}"></script>
+{% endblock %}

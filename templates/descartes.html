@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+{% block title %}Descartes' Stages of Doubt — Episteme{% endblock %}
+{% block extra_css %}
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/pages.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/shared-module.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/descartes.css') }}">
+{% endblock %}
+{% block content %}
+
+<header class="page-header">
+  <p class="page-tag">Module 01 — Foundational Doubt</p>
+  <h1 class="page-title">Descartes' Stages of Doubt</h1>
+  <p class="page-subtitle">
+    In the <em>Meditations</em> (1641), Descartes systematically doubts everything that can be doubted —
+    not to reach skepticism, but to find one <em>indubitable</em> foundation for knowledge.
+  </p>
+</header>
+
+<section class="module-section">
+  <div class="module-intro">
+    <p>Step through each stage of doubt. Watch which beliefs survive — and which are eliminated. Only one survives all three stages.</p>
+  </div>
+
+  <div class="stages-layout">
+
+    <!-- Stage stepper -->
+    <div class="stages-stepper">
+      <div class="stepper-label">Stages</div>
+      {% set stages = [
+        ("0", "✦", "Starting Point",    "All beliefs"),
+        ("1", "👁", "Senses Deceive",   "Stage 1"),
+        ("2", "💭", "Dream Argument",   "Stage 2"),
+        ("3", "👹", "Evil Demon",       "Stage 3"),
+        ("4", "✦", "The Cogito",       "Cogito")
+      ] %}
+      {% for num, emoji, title, sub in stages %}
+      <div class="stage-step {% if loop.first %}active{% endif %}" onclick="goToStage({{ num }})">
+        <div class="ss-icon">{{ emoji }}</div>
+        <div class="ss-text">
+          <div class="ss-title">{{ title }}</div>
+          <div class="ss-sub">{{ sub }}</div>
+        </div>
+        <div class="ss-connector"></div>
+      </div>
+      {% endfor %}
+    </div>
+
+    <!-- Stage panel -->
+    <div class="stage-content-col">
+      <div id="stagePanel"></div>
+    </div>
+
+    <!-- Belief grid -->
+    <div class="belief-grid-col">
+      <div class="bg-label">Belief Inventory</div>
+      <div id="beliefGrid"></div>
+    </div>
+
+  </div>
+</section>
+
+<section class="module-section mcq-section" id="descartesMCQSection">
+  <div id="descartesMCQ"></div>
+</section>
+
+<footer class="footer">
+  <span class="footer-l">PHIL 210: Introduction to Epistemology — Duke University</span>
+  <span class="footer-r">Descartes, R. (1641). <em>Meditations on First Philosophy.</em></span>
+</footer>
+{% endblock %}
+{% block scripts %}
+  <script src="{{ url_for('static', filename='js/descartes.js') }}"></script>
+{% endblock %}
