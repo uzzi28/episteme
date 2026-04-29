@@ -4,172 +4,100 @@
 
 {% block extra_css %}
   <link rel="stylesheet" href="{{ url_for('static', filename='css/pages.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/gettier.css') }}">
 {% endblock %}
 
 {% block content %}
 
 <header class="page-header green-glow">
-  <p class="page-tag">Module 02 — The JTB Problem</p>
+  <p class="page-tag">Module 01 — The JTB Problem</p>
   <h1 class="page-title">The Gettier Problem Explorer</h1>
   <p class="page-subtitle">
-    Edmund Gettier showed in 1963 that <em>justified true belief is not sufficient</em> for
-    knowledge. Explore the cases — and why every proposed fix has struggled.
+    In 1963, Edmund Gettier showed in three pages that <em>justified true belief is not sufficient</em>
+    for knowledge. Walk through the cases, then test every proposed fix — and watch each one break.
   </p>
 </header>
 
+<!-- ── Section 1: Context ──────────────────────────────────────────────── -->
 <section class="content-section">
-  <h3>The Problem</h3>
+  <h3>The Problem in Brief</h3>
   <p>
-    For much of the history of Western philosophy, knowledge was defined as <em>justified true
-    belief</em> (JTB): S knows P iff P is true, S believes P, and S is justified in believing P.
-    This account has roots in Plato's <em>Meno</em> and <em>Theaetetus</em> and was the dominant
-    view by the mid-20th century.
+    The classical analysis of knowledge — dating to Plato's <em>Meno</em> — defines knowledge as
+    <em>justified true belief</em> (JTB): S knows P iff P is true, S believes P, and S has adequate
+    justification for believing P. This account dominated analytic epistemology through the mid-20th century.
   </p>
   <p>
-    In a short 1963 paper, Edmund Gettier constructed two cases in which a subject has a justified
-    true belief that is <em>intuitively not knowledge</em>. The cases are structurally similar: a
-    subject reasons validly from a justified false belief to a true conclusion. The conclusion is
-    true, but for the wrong reasons.
+    Gettier's 1963 paper constructed two cases where all three JTB conditions are met, yet the subject
+    intuitively does not have knowledge. The cases share a common structure: a subject reasons
+    <em>validly</em> from a <em>justified false belief</em> to a conclusion that turns out to be true —
+    but for entirely unrelated reasons. The truth and the justification come apart.
   </p>
   <p>
-    Gettier's paper launched fifty years of proposals to fix the JTB account. None has achieved
-    consensus. This module walks through the classic cases and tests the major proposed solutions.
+    Step through each case below, then use the Solution Tester to see how philosophers have tried
+    — and mostly failed — to patch the JTB account.
   </p>
 </section>
 
-<div class="cases-grid">
-
-  <div class="case-card" data-num="I">
-    <div class="case-tag">Case I · Smith &amp; Jones</div>
-    <div class="case-title">The Job and the Coins</div>
-    <div class="case-desc">
-      Smith has strong evidence that Jones will get the job, and also knows Jones has 10 coins in
-      his pocket. He infers: "The man who will get the job has 10 coins in his pocket." In fact,
-      Smith gets the job — and unbeknownst to him, also has 10 coins in his pocket.
+<!-- ── Section 2: Case Walkthrough ────────────────────────────────────── -->
+<section class="gettier-section" id="caseSection">
+  <div class="section-header-bar">
+    <div class="shb-left">
+      <p class="page-tag" style="margin-bottom:0.3rem;">Step-Through</p>
+      <h2 class="section-title">The Two Cases</h2>
     </div>
-    <div class="case-structure">
-      <div class="case-row">
-        <span class="row-check yes">✓</span>
-        <span class="row-label">P is true (Smith — the job-getter — has 10 coins)</span>
-      </div>
-      <div class="case-row">
-        <span class="row-check yes">✓</span>
-        <span class="row-label">Smith believes P</span>
-      </div>
-      <div class="case-row">
-        <span class="row-check yes">✓</span>
-        <span class="row-label">Smith is justified (via valid inference)</span>
-      </div>
-      <div class="case-row">
-        <span class="row-check no">✗</span>
-        <span class="row-label">Intuitively: Smith does not <em>know</em> P</span>
-      </div>
+    <div class="case-tabs" id="caseTabs">
+      <button class="case-tab-btn active" data-case-id="case1" onclick="selectCase('case1')">
+        💼 Case I — Job &amp; Coins
+      </button>
+      <button class="case-tab-btn" data-case-id="case2" onclick="selectCase('case2')">
+        🚗 Case II — Car &amp; Disjunction
+      </button>
     </div>
   </div>
 
-  <div class="case-card" data-num="II">
-    <div class="case-tag">Case II · Smith &amp; Ford</div>
-    <div class="case-title">The Car and the Disjunction</div>
-    <div class="case-desc">
-      Smith has strong evidence that Jones owns a Ford. He infers the disjunction: "Either Jones
-      owns a Ford, or Brown is in Barcelona." The disjunction is true — but because Brown happens
-      to be in Barcelona, not because Jones owns a Ford (Jones doesn't).
-    </div>
-    <div class="case-structure">
-      <div class="case-row">
-        <span class="row-check yes">✓</span>
-        <span class="row-label">P is true (Brown is in Barcelona)</span>
-      </div>
-      <div class="case-row">
-        <span class="row-check yes">✓</span>
-        <span class="row-label">Smith believes P (via justified inference)</span>
-      </div>
-      <div class="case-row">
-        <span class="row-check yes">✓</span>
-        <span class="row-label">Smith is justified in his inference</span>
-      </div>
-      <div class="case-row">
-        <span class="row-check no">✗</span>
-        <span class="row-label">Intuitively: Smith does not <em>know</em> P</span>
-      </div>
+  <div id="caseWalkthrough" class="walkthrough-area"></div>
+</section>
+
+<!-- ── Section 3: Solution Tester ─────────────────────────────────────── -->
+<section class="gettier-section" id="solutionSection">
+  <div class="section-header-bar">
+    <div class="shb-left">
+      <p class="page-tag" style="margin-bottom:0.3rem;">Proposed Fixes</p>
+      <h2 class="section-title">The Solution Tester</h2>
     </div>
   </div>
+  <p class="section-intro">
+    Select a proposed solution. See how it handles both Gettier cases, then see the variant case that breaks it.
+  </p>
 
-</div>
+  <div class="sol-tabs" id="solTabs">
+    <button class="sol-tab-btn active" data-sol-id="nfl"        onclick="selectSolution('nfl')">🚫 No False Lemmas</button>
+    <button class="sol-tab-btn"        data-sol-id="causal"     onclick="selectSolution('causal')">🔗 Causal Theory</button>
+    <button class="sol-tab-btn"        data-sol-id="reliabilism" onclick="selectSolution('reliabilism')">⚙️ Reliabilism</button>
+    <button class="sol-tab-btn"        data-sol-id="tracking"   onclick="selectSolution('tracking')">🌐 Tracking Theory</button>
+  </div>
 
-<section class="solutions-section">
-  <h3>Proposed Solutions — and Their Problems</h3>
-  <div class="solutions-list">
+  <div id="solutionPanel" class="solution-panel"></div>
 
-    <div class="solution-row">
-      <span class="sol-num">1.</span>
-      <div class="sol-content">
-        <div class="sol-name">No False Lemmas (Harman, 1973)</div>
-        <div class="sol-desc">
-          Knowledge requires that the belief not be inferred from any false intermediate step.
-          Diagnoses the Gettier cases correctly — Smith infers from "Jones owns a Ford" or
-          "Jones will get the job," both false.
-        </div>
-        <div class="sol-status partial">Partial fix — fails for cases with no explicit false lemma (Nogot variant)</div>
-      </div>
-    </div>
-
-    <div class="solution-row">
-      <span class="sol-num">2.</span>
-      <div class="sol-content">
-        <div class="sol-name">Causal Theory (Goldman, 1967)</div>
-        <div class="sol-desc">
-          Knowledge requires the right kind of causal connection between the fact and the belief.
-          Works for perceptual knowledge; P's being true must causally contribute to S's believing P.
-        </div>
-        <div class="sol-status fails">Fails for mathematical/future knowledge where causal connection is unclear</div>
-      </div>
-    </div>
-
-    <div class="solution-row">
-      <span class="sol-num">3.</span>
-      <div class="sol-content">
-        <div class="sol-name">Reliabilism (Goldman, 1979)</div>
-        <div class="sol-desc">
-          A belief constitutes knowledge if it is produced by a reliable cognitive process — one
-          that tends to produce true beliefs. Gettier cases involve unreliable causal chains despite
-          justified conclusions.
-        </div>
-        <div class="sol-status partial">Faces the generality problem: how do we individuate the relevant process type?</div>
-      </div>
-    </div>
-
-    <div class="solution-row">
-      <span class="sol-num">4.</span>
-      <div class="sol-content">
-        <div class="sol-name">Tracking Theory (Nozick, 1981)</div>
-        <div class="sol-desc">
-          Knowledge requires that the belief be sensitive and adherent across possible worlds.
-          Gettier cases fail sensitivity — in nearby worlds where the lucky truth-maker is absent,
-          the belief would still be held.
-        </div>
-        <div class="sol-status partial">
-          <a href="{{ url_for('nozick') }}" style="color: inherit;">See Module 01 for the full interactive analysis →</a>
-        </div>
-      </div>
-    </div>
-
+  <div class="verdict-grid-section">
+    <div class="vg-title">Summary — All Solutions</div>
+    <div id="verdictGrid" class="verdict-grid"></div>
+    <p class="vg-note">Click any row to jump to that solution's analysis. Every proposed fix handles the original cases but breaks on a variant.</p>
   </div>
 </section>
 
-<div class="coming-banner">
-  <div class="banner-icon">🔍</div>
-  <div class="banner-title">Interactive module coming soon</div>
-  <div class="banner-desc">
-    The full Gettier Explorer will let you step through each case, test each solution, and see
-    exactly where it succeeds or breaks down.
-  </div>
-  <a href="{{ url_for('nozick') }}" class="banner-link">Explore Nozick's Tracking Theory in the meantime →</a>
-</div>
+<!-- ── Section 4: MCQ ──────────────────────────────────────────────────── -->
+<section class="gettier-section mcq-section" id="mcqSection">
+  <div id="gettierMCQ"></div>
+</section>
 
 <footer class="footer">
   <span class="footer-l">PHIL 210: Introduction to Epistemology — Duke University</span>
   <span class="footer-r">Gettier, E. (1963). "Is Justified True Belief Knowledge?" <em>Analysis.</em></span>
 </footer>
 
+{% endblock %}
+
+{% block scripts %}
+  <script src="{{ url_for('static', filename='js/gettier.js') }}"></script>
 {% endblock %}
