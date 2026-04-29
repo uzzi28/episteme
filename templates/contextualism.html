@@ -12,33 +12,28 @@
   <h1 class="page-title">Contextualism &amp; the Bank Cases</h1>
   <p class="page-subtitle">
     Does what it takes to <em>know</em> something change with the stakes? DeRose and Cohen argue
-    that 'knows' is context-sensitive — the same evidence can make you a knower in one situation
-    and not in another.
+    that 'knows' is context-sensitive — the same evidence can make you a knower in one situation and not in another.
   </p>
 </header>
 
+<!-- ── Section 1: Bank cases (original tab layout) ───────────────────── -->
 <section class="module-section">
   <div class="module-intro">
-    <p>Compare two bank cases with identical evidence but different stakes. Drag the stakes slider to see how the knowledge verdict shifts.</p>
+    <p>Compare two bank cases with identical evidence but different stakes. Select a case, then drag the stakes slider to see how the knowledge verdict shifts.</p>
   </div>
 
-  <!-- Bank case tabs -->
-  <div class="tab-row">
-    <div class="bank-tabs">
-      <button class="bank-tab-btn active" data-case-id="low"  onclick="selectBankCase('low')">😌 Case A — Low Stakes</button>
-      <button class="bank-tab-btn"        data-case-id="high" onclick="selectBankCase('high')">😰 Case B — High Stakes</button>
-    </div>
+  <div class="bank-tabs">
+    <button class="bank-tab-btn active" data-case-id="low"  onclick="selectBankCase('low')">😌 Case A — Low Stakes</button>
+    <button class="bank-tab-btn"        data-case-id="high" onclick="selectBankCase('high')">😰 Case B — High Stakes</button>
   </div>
 
-  <!-- Stakes slider -->
   <div class="stakes-slider-section">
     <div class="sl-header">
       <span class="sl-label">Epistemic Stakes</span>
       <div id="stakeDisplay" class="stake-display"></div>
       <div id="verdictChip" class="verdict-chip knows">Knows ✓</div>
     </div>
-    <input type="range" id="stakesSlider" class="stakes-slider"
-           min="1" max="5" value="1" step="1">
+    <input type="range" id="stakesSlider" class="stakes-slider" min="1" max="5" value="1" step="1">
     <div class="sl-ticks">
       <span>Minimal</span><span>Moderate</span><span>Significant</span><span>High</span><span>Critical</span>
     </div>
@@ -47,21 +42,19 @@
   <div id="caseDisplay" class="case-display"></div>
 </section>
 
-<!-- Theories section -->
-<section class="module-section">
-  <h2 class="section-title" style="margin-bottom:1.2rem">Three Responses</h2>
-  <p class="section-intro">How do epistemologists explain why the verdicts differ?</p>
-
-  <div class="theory-tabs">
-    <button class="theory-tab-btn active" data-theory-id="subject"    onclick="selectTheory('subject')">Subject Sensitive Invariantism</button>
-    <button class="theory-tab-btn"        data-theory-id="context"    onclick="selectTheory('context')">Attributor Contextualism</button>
-    <button class="theory-tab-btn"        data-theory-id="invariant"  onclick="selectTheory('invariant')">Moderate Invariantism</button>
+<!-- ── Section 2: Three theories full-width grid ─────────────────────── -->
+<section class="module-section theories-section">
+  <div class="theories-header">
+    <div>
+      <p class="page-tag" style="margin-bottom:0.3rem;">Three Responses</p>
+      <h2 class="section-title">How Do Epistemologists Explain This?</h2>
+    </div>
+    <p class="theories-subtitle">Each theory gives a different account of why the verdicts in Cases A and B diverge.</p>
   </div>
-
-  <div id="theoryPanel" class="theory-panel"></div>
+  <div class="theories-full-grid" id="theoriesGrid"></div>
 </section>
 
-<!-- MCQ -->
+<!-- ── MCQ ── -->
 <section class="module-section mcq-section">
   <div id="contextMCQ"></div>
 </section>

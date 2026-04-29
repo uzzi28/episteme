@@ -134,7 +134,7 @@ function renderCaseDisplay() {
   const el  = document.getElementById("caseDisplay");
   if (!el || !bc || !sl) return;
 
-  const isKnows = sl.verdict === "knows";
+  const isKnows  = sl.verdict === "knows";
   const isBorder = sl.verdict === "borderline";
 
   el.innerHTML = `
@@ -153,7 +153,6 @@ function renderCaseDisplay() {
           </div>
         </div>
       </div>
-
       <div class="cd-verdict-card ${isKnows ? 'knows' : isBorder ? 'borderline' : 'not-knows'}">
         <div class="cdv-header">
           <span class="cdv-icon">${isKnows ? '✓' : isBorder ? '~' : '✗'}</span>
@@ -174,18 +173,11 @@ function updateSlider(val) {
   const inp = document.getElementById("stakesSlider");
   if (inp) inp.value = stakeLevel;
 
-  // Update slider fill color
-  const pct = ((stakeLevel - 1) / 4) * 100;
-  if (inp) inp.style.setProperty("--fill-pct", pct + "%");
-  if (inp) inp.style.setProperty("--fill-color", sl.color);
-
-  // Update stake display
   const sd = document.getElementById("stakeDisplay");
   if (sd) sd.innerHTML = `
     <span class="sd-level" style="color:${sl.color}">${sl.label}</span>
     <span class="sd-desc">${sl.desc}</span>`;
 
-  // Update verdict chip
   const vc = document.getElementById("verdictChip");
   if (vc) {
     const isKnows  = sl.verdict === "knows";
@@ -201,37 +193,29 @@ function updateSlider(val) {
 //  THEORY TABS
 // ─────────────────────────────────────────────────────────────────────────────
 
-function selectTheory(id) {
-  activeTheory = id;
-  document.querySelectorAll(".theory-tab-btn").forEach(b =>
-    b.classList.toggle("active", b.dataset.theoryId === id));
-  renderTheoryPanel();
-}
+function renderTheoriesGrid() {
+  const el = document.getElementById("theoriesGrid");
+  if (!el) return;
 
-function renderTheoryPanel() {
-  const th = THEORIES.find(t => t.id === activeTheory);
-  const el = document.getElementById("theoryPanel");
-  if (!el || !th) return;
-
-  el.innerHTML = `
-    <div class="theory-panel-inner fade-in">
-      <div class="tp-header">
-        <div class="tp-name">${th.name}</div>
-        <div class="tp-author">${th.author}</div>
+  el.innerHTML = THEORIES.map(th => `
+    <div class="theory-grid-card">
+      <div class="tgc-header">
+        <div class="tgc-name">${th.name}</div>
+        <div class="tgc-author">${th.author}</div>
       </div>
-      <div class="tp-claim">
-        <div class="tp-claim-label">Core Claim</div>
+      <div class="tgc-claim">
+        <div class="tgc-section-label">Core Claim</div>
         <p>${th.claim}</p>
       </div>
-      <div class="tp-bank">
-        <div class="tp-bank-label">Applied to the Bank Cases</div>
+      <div class="tgc-bank">
+        <div class="tgc-section-label">Applied to Bank Cases</div>
         <p>${th.bankResponse}</p>
       </div>
-      <div class="tp-objection">
-        <span class="tp-obj-icon">⚠</span>
+      <div class="tgc-objection">
+        <span class="tgc-obj-icon">⚠</span>
         <p>${th.objection}</p>
       </div>
-    </div>`;
+    </div>`).join("");
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -319,7 +303,7 @@ function showCtxComplete() {
 
 document.addEventListener("DOMContentLoaded", () => {
   selectBankCase("low");
-  selectTheory("subject");
+  renderTheoriesGrid();
   renderCtxMCQ();
 
   const slider = document.getElementById("stakesSlider");

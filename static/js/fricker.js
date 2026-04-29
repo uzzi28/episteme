@@ -121,7 +121,7 @@ let mcqAnswered    = false;
 
 function selectScenario(id) {
   activeScenario = id;
-  document.querySelectorAll(".scenario-tab-btn").forEach(b =>
+  document.querySelectorAll(".scenario-grid-btn").forEach(b =>
     b.classList.toggle("active", b.dataset.scenarioId === id));
   renderScenarioPanel();
 }
