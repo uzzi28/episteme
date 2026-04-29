@@ -21,10 +21,10 @@
     <div class="nav-links">
       <a href="{{ url_for('index') }}"
          class="{{ 'active' if request.endpoint == 'index' else '' }}">Home</a>
-      <a href="{{ url_for('nozick') }}"
-         class="{{ 'active' if request.endpoint == 'nozick' else '' }}">Tracking Theory</a>
       <a href="{{ url_for('gettier') }}"
          class="{{ 'active' if request.endpoint == 'gettier' else '' }}">Gettier Cases</a>
+      <a href="{{ url_for('nozick') }}"
+         class="{{ 'active' if request.endpoint == 'nozick' else '' }}">Tracking Theory</a>
       <span class="nav-soon">More coming soon</span>
     </div>
   </nav>

@@ -324,8 +324,8 @@ const PROPOSITIONS = [
     statement: "There is a tree outside my window",
     emoji: "🌳",
     method: "Method of belief: Direct visual perception (looking at it right now)",
-    verdict: "knowledge",
-    verdictSummary: "Both sensitivity and adherence are satisfied when the belief is formed by direct current perception.",
+    verdict: "not-knowledge",
+    verdictSummary: "Sensitivity fails. The 'realistic painting' world is a nearby world where P is false but you still believe P — your perception cannot distinguish tree from trompe-l'oeil. This mirrors the Fake Barn case: an epistemically hostile environment poisons nearby modal space even when you happen to be looking at the real thing.",
     actualWorld: {
       description: "You look out your window and see a large oak tree. The belief is formed by direct, current visual perception.",
     },
@@ -382,15 +382,15 @@ const PROPOSITIONS = [
         explanation: "This is the Fake Barn insight applied here. The closeness of a possible world depends on the actual environment. If trompe-l'oeil window paintings are extremely rare, that world is distant — your belief is sensitive and you have knowledge. If they're common in your building, nearby worlds include many paintings, sensitivity fails, and you don't know. This is why Nozick's theory makes knowledge environment-relative."
       },
       {
-        q: "Compare 'there is a tree outside my window' (perception-based) to 'my keys are on the counter' (memory-based). Why does the first yield knowledge but the second doesn't?",
+        q: "Both 'there is a tree outside my window' and 'my keys are on the counter' fail sensitivity, but for different reasons. What is the structural difference?",
         options: [
-          "Trees are more stable than keys",
-          "Perception is more reliable than memory in general",
-          "Perception-based belief immediately tracks current facts — if the tree were gone, perception would reveal it. Memory-based belief is anchored to the past and doesn't update with changes",
-          "The second proposition involves more possible worlds"
+          "There is no difference — both fail for the same reason",
+          "The tree case fails because of a hostile epistemic environment (fake nearby), while the keys case fails because of stale evidence that doesn't track current facts",
+          "The tree case fails adherence; the keys case fails sensitivity",
+          "The keys case is worse because financial stakes are higher"
         ],
-        correct: 2,
-        explanation: "The difference is in method-sensitivity. Visual perception of the tree is causally responsive to whether a tree is there right now — the belief tracks the current fact. Memory of placing keys is anchored to a past state and doesn't automatically update. Nearby worlds where keys moved leave the memory-belief unchanged, but nearby worlds without a tree are immediately revealed by perception. Same structure, different tracking profiles."
+        correct: 1,
+        explanation: "Both fail sensitivity, but the mechanism differs. The keys case fails because the belief-forming method (8-hour-old memory) is anchored to the past — in nearby worlds where the keys moved, the memory hasn't updated. The tree case fails because the environment contains a convincing fake nearby — even though you're using current perception, a nearby world swaps tree for painting. One is a method problem; the other is an environment problem. Nozick's theory captures both."
       },
       {
         q: "If trompe-l'oeil paintings are rare in your area, this belief constitutes knowledge. What principle does this illustrate?",
