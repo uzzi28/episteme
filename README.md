@@ -1,7 +1,9 @@
 # Episteme — Interactive Epistemology
 
 **PHIL 210: Introduction to Epistemology — Duke University**  
-Final project: an interactive multi-page website teaching epistemology through visualization.
+An interactive multi-page website teaching epistemology through visualization and interactivity.
+
+🌐 **Live site: [www.epistemeonline.net](https://www.epistemeonline.net)**
 
 ---
 
@@ -32,23 +34,37 @@ python app.py
 
 ```
 episteme/
-├── app.py                  # Flask server — page routes + future API stubs
+├── app.py                      # Flask server — page routes
 ├── requirements.txt
+├── Procfile                    # Gunicorn entry point for Render deployment
 ├── .gitignore
 │
-├── templates/              # Jinja2 HTML templates
-│   ├── base.html           # Shared layout: <head>, nav, fonts
-│   ├── index.html          # Home / module overview
-│   ├── nozick.html         # Module 01 — Nozick Tracking Theory (interactive)
-│   └── gettier.html        # Module 02 — Gettier Problem Explorer
+├── templates/                  # Jinja2 HTML templates
+│   ├── base.html               # Shared layout: <head>, nav, fonts
+│   ├── index.html              # Home / module overview
+│   ├── descartes.html          # Module 01 — Descartes' Stages of Doubt
+│   ├── gettier.html            # Module 02 — Gettier Problem Explorer
+│   ├── nozick.html             # Module 03 — Nozick's Tracking Theory
+│   ├── contextualism.html      # Module 04 — Contextualism & the Bank Cases
+│   └── fricker.html            # Module 05 — Epistemic Injustice
 │
 └── static/
     ├── css/
-    │   ├── base.css        # CSS variables, reset, nav, footer, shared utils
-    │   ├── nozick.css      # Styles for the Nozick interactive page
-    │   └── pages.css       # Styles for index.html and gettier.html
+    │   ├── base.css            # CSS variables, reset, nav, footer
+    │   ├── pages.css           # Shared styles for static pages
+    │   ├── shared-module.css   # MCQ engine + shared section styles
+    │   ├── nozick.css          # Nozick interactive page styles
+    │   ├── gettier.css         # Gettier interactive page styles
+    │   ├── descartes.css       # Descartes page styles
+    │   ├── contextualism.css   # Contextualism page styles
+    │   └── fricker.css         # Fricker page styles
     └── js/
-        └── nozick.js       # All JS for the Nozick possible-worlds visualizer
+        ├── nozick.js           # Nozick scenario selector
+        ├── nozick-explorer.js  # Possible worlds blob visualizer
+        ├── gettier.js          # Gettier case walkthrough + solution tester
+        ├── descartes.js        # Stages of doubt + belief inventory
+        ├── contextualism.js    # Bank cases + stakes slider + theories grid
+        └── fricker.js          # Epistemic injustice scenario explorer
 ```
 
 ---
@@ -58,24 +74,37 @@ episteme/
 | Route | Template | Description |
 |---|---|---|
 | `/` | `index.html` | Landing page with module cards and reading list |
-| `/nozick` | `nozick.html` | Interactive tracking theory visualizer |
-| `/gettier` | `gettier.html` | Gettier case explorer (in progress) |
+| `/descartes` | `descartes.html` | Stages of doubt, belief inventory, Cogito |
+| `/gettier` | `gettier.html` | Case walkthrough + solution tester |
+| `/nozick` | `nozick.html` | Tracking theory + possible worlds visualizer |
+| `/contextualism` | `contextualism.html` | Bank cases + stakes slider |
+| `/fricker` | `fricker.html` | Epistemic injustice scenario explorer |
+
+---
+
+## Modules
+
+- [x] Module 01 — Descartes' Stages of Doubt
+- [x] Module 02 — Gettier Problem Explorer
+- [x] Module 03 — Nozick's Tracking Theory
+- [x] Module 04 — Contextualism & the Bank Cases
+- [x] Module 05 — Epistemic Injustice (Fricker)
 
 ---
 
 ## Adding a Module
 
 1. Create `templates/<name>.html` extending `base.html`
-2. Add page-specific styles to `static/css/pages.css` (or a new file)
-3. Add JS to `static/js/<name>.js` if needed
+2. Add page-specific styles to `static/css/<name>.css`
+3. Add JS to `static/js/<name>.js`
 4. Register the route in `app.py`
 5. Add a nav link in `templates/base.html`
 6. Add a module card to `templates/index.html`
 
 ---
 
-## Planned Modules
+## Deployment
 
-- [x] Module 01 — Nozick's Tracking Theory
-- [ ] Module 02 — Gettier Problem Explorer
-- [ ] Module 03 — TBD (Descartes' doubt / epistemic injustice / internalism–externalism)
+Hosted on [Render](https://render.com) with a custom domain via Squarespace DNS.  
+The `Procfile` runs `gunicorn app:app` for production.  
+Note: the free tier may take up to 30 seconds to wake up after inactivity.
